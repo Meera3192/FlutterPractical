@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practical/presentation/model/task_master.dart';
+import 'package:flutter_practical/model/task_master.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -11,9 +11,7 @@ class AddEditTaskController extends GetxController {
       .now()
       .obs;
 
-  //AddEditTaskController({required this.task, this.isEdit = false});
   AddEditTaskController();
-
 
   late FocusNode focusName = FocusNode();
   late FocusNode focusDescription = FocusNode();
@@ -51,7 +49,6 @@ class AddEditTaskController extends GetxController {
           ? task.taskDescription!
           : '';
     } else {
-      //selectedDate.value = DateFormat("dd-MM-yyyy").parse(DateFormat("dd-MM-yyyy").format(DateTime.now()));
       nameController.text = "";
       desciptionController.text = "";
     }
@@ -63,8 +60,6 @@ class AddEditTaskController extends GetxController {
         initialDate: selectedDate.value,
         firstDate: DateTime(2000),
         lastDate: DateTime(2024),
-        //initialEntryMode: DatePickerEntryMode.input,
-        // initialDatePickerMode: DatePickerMode.year,
         helpText: 'Select DOB',
         cancelText: 'Close',
         confirmText: 'Confirm',
