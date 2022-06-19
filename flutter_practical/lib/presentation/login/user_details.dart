@@ -23,7 +23,7 @@ import 'package:flutter_practical/presentation/login/login_page.dart';
 import 'package:flutter_practical/presentation/login/sign_in.dart';
 import 'package:get/get.dart';
 
-class FirstScreen extends StatelessWidget {
+class UserDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +91,7 @@ class FirstScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Sign Out',
-                    style: TextStyle(fontSize: 25, color: Colors.white),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
                 style: ElevatedButton.styleFrom(

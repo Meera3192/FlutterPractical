@@ -19,17 +19,17 @@
 // SOFTWARE.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_practical/presentation/login/first_screen.dart';
+import 'package:flutter_practical/controller/login_controller.dart';
+import 'package:flutter_practical/presentation/login/user_details.dart';
 import 'package:flutter_practical/presentation/login/sign_in.dart';
+import 'package:flutter_practical/presentation/task/task_list.dart';
+import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
+ late final LoginController loginController ;
   @override
   Widget build(BuildContext context) {
+    loginController = Get.put(LoginController());
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -58,13 +58,7 @@ class _LoginPageState extends State<LoginPage> {
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return FirstScreen();
-                },
-              ),
-            );
+            Get.to(TaskList(),);
           }
         });
       },

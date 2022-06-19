@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "901045081407",
+    "project_id": "elredmeera",
+    "storage_bucket": "elredmeera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901045081407:android:85ab599ee6411a0e21ef8a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_practical"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901045081407-4rf9r95vfafrkpqv7at3ar26rg99fsgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOCqYoWM2CfTjc4EIUuO_9ORYpQpRrsMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901045081407-4rf9r95vfafrkpqv7at3ar26rg99fsgr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901045081407:android:e57e415ce11ecf6221ef8a",
+        "android_client_info": {
+          "package_name": "com.example.meera_elred"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901045081407-4rf9r95vfafrkpqv7at3ar26rg99fsgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOCqYoWM2CfTjc4EIUuO_9ORYpQpRrsMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901045081407-4rf9r95vfafrkpqv7at3ar26rg99fsgr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
