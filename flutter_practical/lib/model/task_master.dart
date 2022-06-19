@@ -1,12 +1,14 @@
 /// Task : [{"TaskDate":"","TaskDescription":"","TaskId":1,"TaskName":"","UserId":""}]
 
-class Task {
-  Task({
-      List<Task>? task,}){
+import 'package:cloud_firestore/cloud_firestore.dart';
+class TaskMaster {
+  TaskMaster({
+    List<Task>? task,
+  }) {
     _task = task;
-}
+  }
 
-  Task.fromJson(dynamic json) {
+  TaskMaster.fromJson(dynamic json) {
     if (json['Task'] != null) {
       _task = [];
       json['Task'].forEach((v) {
@@ -14,10 +16,9 @@ class Task {
       });
     }
   }
+
   List<Task>? _task;
-Task copyWith({  List<Task>? task,
-}) => Task(  task: task ?? _task,
-);
+
   List<Task>? get task => _task;
 
   Map<String, dynamic> toJson() {
@@ -27,7 +28,6 @@ Task copyWith({  List<Task>? task,
     }
     return map;
   }
-
 }
 
 /// TaskDate : ""
@@ -38,17 +38,18 @@ Task copyWith({  List<Task>? task,
 
 class Task {
   Task({
-      String? taskDate, 
-      String? taskDescription, 
-      int? taskId, 
-      String? taskName, 
-      String? userId,}){
+    String? taskName,
+    String? taskDescription,
+    String? taskDate,
+    String? taskId,
+    String? userId,
+  }) {
     _taskDate = taskDate;
     _taskDescription = taskDescription;
     _taskId = taskId;
     _taskName = taskName;
     _userId = userId;
-}
+  }
 
   Task.fromJson(dynamic json) {
     _taskDate = json['TaskDate'];
@@ -57,26 +58,41 @@ class Task {
     _taskName = json['TaskName'];
     _userId = json['UserId'];
   }
+
   String? _taskDate;
   String? _taskDescription;
-  int? _taskId;
+  String? _taskId;
   String? _taskName;
   String? _userId;
-Task copyWith({  String? taskDate,
-  String? taskDescription,
-  int? taskId,
-  String? taskName,
-  String? userId,
-}) => Task(  taskDate: taskDate ?? _taskDate,
-  taskDescription: taskDescription ?? _taskDescription,
-  taskId: taskId ?? _taskId,
-  taskName: taskName ?? _taskName,
-  userId: userId ?? _userId,
-);
+
+  Task copyWith({
+    String? taskDate,
+    String? taskDescription,
+    String? taskId,
+    String? taskName,
+    String? userId,
+  }) =>
+      Task(
+        taskDate: taskDate ?? _taskDate,
+        taskDescription: taskDescription ?? _taskDescription,
+        taskId: taskId ?? _taskId,
+        taskName: taskName ?? _taskName,
+        userId: userId ?? _userId,
+      );
+
+
+  set taskDate(String? value) {
+    _taskDate = value;
+  }
+
   String? get taskDate => _taskDate;
+
   String? get taskDescription => _taskDescription;
-  int? get taskId => _taskId;
+
+  String? get taskId => _taskId;
+
   String? get taskName => _taskName;
+
   String? get userId => _userId;
 
   Map<String, dynamic> toJson() {
@@ -89,4 +105,25 @@ Task copyWith({  String? taskDate,
     return map;
   }
 
+  factory Task.fromSnapshot(DocumentSnapshot snapshot) {
+    final newTask = Task.fromJson(snapshot.data() as Map<String, dynamic>);
+    newTask.taskId = snapshot.reference.id;
+    return newTask;
+  }
+
+  set taskDescription(String? value) {
+    _taskDescription = value;
+  }
+
+  set taskId(String? value) {
+    _taskId = value;
+  }
+
+  set taskName(String? value) {
+    _taskName = value;
+  }
+
+  set userId(String? value) {
+    _userId = value;
+  }
 }
