@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_practical/presentation/login/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
   runApp(MyApp());}
 

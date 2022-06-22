@@ -11,19 +11,28 @@ class AddEditTaskController extends GetxController {
       .now()
       .obs;
 
+  RxString rxName = "".obs;
+  RxString rxDescription = "".obs;
+  RxString rxDate = "".obs;
+
   AddEditTaskController();
 
   late FocusNode focusName = FocusNode();
   late FocusNode focusDescription = FocusNode();
   late FocusNode focusDate = FocusNode();
 
-  late TextEditingController nameController = TextEditingController();
-  late TextEditingController desciptionController = TextEditingController();
   late TextEditingController dateController = TextEditingController();
 
   bool isError = false;
   String errorMsg = "";
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+
+
+  }
 
   @override
   void dispose() {
@@ -39,18 +48,16 @@ class AddEditTaskController extends GetxController {
     this.isEdit = isEdit;
 
     if (isEdit) {
-      selectedDate.value = DateFormat("dd-MM-yyyy").parse(task.taskDate.toString());
-      nameController.text =
-      (task.taskName != null && task.taskName!.isNotEmpty)
-          ? task.taskName.toString()
-          : '';
-      desciptionController.text = (task.taskDescription != null &&
-          task.taskDescription!.isNotEmpty)
-          ? task.taskDescription!
-          : '';
+      rxName = RxString(task.taskName!);
+      rxDescription = RxString(task.taskDescription!);
+      rxDate = RxString(task.taskDate.toString());
+     // selectedDate.value = DateFormat("dd-MM-yyyy").parse(task.taskDate.toString());
+
     } else {
-      nameController.text = "";
-      desciptionController.text = "";
+      rxName = RxString("");
+      rxDescription = RxString("");
+      rxDate = RxString(DateFormat("dd-MM-yyyy").format(DateTime.now()));
+     // selectedDate.value = DateTime.now();
     }
   }
 
@@ -70,6 +77,8 @@ class AddEditTaskController extends GetxController {
         selectableDayPredicate: disableDate);
     if (pickedDate != null && pickedDate != selectedDate.value) {
       selectedDate.value = pickedDate;
+      rxDate.value = DateFormat("dd-MM-yyyy").format(selectedDate.value);
+      print(rxDate.value);
     }
   }
 

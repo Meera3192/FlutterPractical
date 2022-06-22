@@ -8,6 +8,7 @@ import 'package:flutter_practical/presentation/task/task_list.dart';
 import 'package:flutter_practical/presentation/task/task_repository.dart';
 import 'package:flutter_practical/widget/common_button.dart';
 import 'package:flutter_practical/widget/common_input_text_box.dart';
+import 'package:flutter_practical/widget/common_text_input.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -19,8 +20,7 @@ class AddEditTask extends StatelessWidget {
 
   AddEditTask({Key? key, required this.task, this.isEdit = false});
 
-  final AddEditTaskController addEditTaskController =
-      Get.put(AddEditTaskController());
+  final AddEditTaskController addEditTaskController = Get.put(AddEditTaskController());
 
   final TaskRepository repository = TaskRepository();
 
@@ -29,60 +29,81 @@ class AddEditTask extends StatelessWidget {
     addEditTaskController.initController(task, isEdit);
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-            title: Container(
-              child: Text("Task Details"),
-            ),
+      /*  appBar: AppBar(
+            backgroundColor: Colors.transparent,
             actions: [
-              IconButton(
-                icon: const Icon(Icons.account_circle),
-                tooltip: 'Show Snackbar',
-                onPressed: () {
-                  signInWithGoogle().then((result) {
-                    if (result != null) {
-                      Get.to(
-                        UserDetails(),
-                      );
-                    } else {
-                      Get.to(
-                        LoginPage(),
-                      );
-                    }
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.account_circle),
+                    tooltip: 'Show Snackbar',
+                    onPressed: () {
+                      signInWithGoogle().then((result) {
+                        if (result != null) {
+                          Get.to(
+                            UserDetails(),
+                          );
+                        } else {
+                          Get.to(
+                            LoginPage(),
+                          );
+                        }
+                      });
+                    },
+                  ),
+                ],
               ),
-            ]),
+            ]),*/
         body: Container(
-            color: Colors.white,
+            color: Colors.indigo[400],
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Column(
                 children: [
-                  CommonInputTextBox(
-                    focusNode: addEditTaskController.focusName,
-                    nextFocusNode: addEditTaskController.focusDescription,
-                    textLimit: 20,
-                    text: "Name",
-                    hintText: 'Enter Task Name',
-                    boxHeight: 40,
-                    isEnabled: true,
-                    boxWidth: double.infinity,
-                    tf_controller: addEditTaskController.nameController,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back, color: Colors.blue),
+                        onPressed: () {
+                          Get.back();
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.account_circle),
+                        tooltip: 'Show Snackbar',
+                        onPressed: () {
+                          signInWithGoogle().then((result) {
+                            if (result != null) {
+                              Get.to(
+                                UserDetails(),
+                              );
+                            } else {
+                              Get.to(
+                                LoginPage(),
+                              );
+                            }
+                          });
+                        },
+                      ),
+                    ],
                   ),
+                  TextInput(onChanged: (value){
+                    addEditTaskController.rxName=RxString(value);
+                  }, labelText: "Name",value: addEditTaskController.rxName.value,),
                   SizedBox(
                     height: 30,
                   ),
-                  CommonInputTextBox(
-                    focusNode: addEditTaskController.focusDescription,
-                    nextFocusNode: addEditTaskController.focusDate,
-                    textLimit: 100,
-                    text: "Description",
-                    hintText: 'Enter Task Description',
-                    boxHeight: 35,
-                    isEnabled: true,
-                    boxWidth: double.infinity,
-                    tf_controller: addEditTaskController.desciptionController,
-                  ),
+                  TextInput(onChanged: (value){
+                    addEditTaskController.rxDescription=RxString(value);
+                  }, labelText: "Description",value: addEditTaskController.rxDescription.value),
                   SizedBox(
                     height: 30,
                   ),
@@ -114,11 +135,7 @@ class AddEditTask extends StatelessWidget {
                     child: Row(
                       children: [
                         Obx(
-                          () => Text(
-                            DateFormat("dd/MM/yyyy")
-                                .format(
-                                    addEditTaskController.selectedDate.value)
-                                .toString(),
+                          () => Text(addEditTaskController.rxDate.value,
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
@@ -135,7 +152,7 @@ class AddEditTask extends StatelessWidget {
                   SizedBox(
                     height: 60,
                   ),
-                  (addEditTaskController.errorMsg != null &&
+                /*  (addEditTaskController.errorMsg != null &&
                           addEditTaskController.errorMsg.isNotEmpty)
                       ? Text(
                           addEditTaskController.errorMsg,
@@ -145,7 +162,7 @@ class AddEditTask extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         )
-                      : Text(''),
+                      : Text(''),*/
                   SizedBox(
                     height: 15,
                   ),
@@ -157,17 +174,11 @@ class AddEditTask extends StatelessWidget {
                       onConfirm: () {
                         if (addEditTaskController.isEdit) {
                           updateTask(
-                            addEditTaskController.nameController.text
-                                .toString(),
-                            addEditTaskController.desciptionController.text
-                                .toString(),
+                            addEditTaskController.rxName.value,addEditTaskController.rxDescription.value,
                           );
                         } else {
                           addTask(
-                            addEditTaskController.nameController.text
-                                .toString(),
-                            addEditTaskController.desciptionController.text
-                                .toString(),
+                            addEditTaskController.rxName.value,addEditTaskController.rxDescription.value,
                           );
                         }
                       },
@@ -193,9 +204,7 @@ class AddEditTask extends StatelessWidget {
       repository.addTask(Task(
         taskName: name,
         taskDescription: desc,
-        taskDate: DateFormat("dd-MM-yyyy")
-            .format(addEditTaskController.selectedDate.value)
-            .toString(),
+        taskDate:  DateFormat("dd-MM-yyyy").format(DateFormat("dd-MM-yyyy").parse(addEditTaskController.rxDate.value)),
         taskId: "",
         userId: uid,
       ));
@@ -218,9 +227,7 @@ class AddEditTask extends StatelessWidget {
       repository.updateTask(Task(
         taskName: name,
         taskDescription: desc,
-        taskDate: DateFormat("dd-MM-yyyy")
-            .format(addEditTaskController.selectedDate.value)
-            .toString(),
+        taskDate: DateFormat("dd-MM-yyyy").format(DateFormat("dd-MM-yyyy").parse(addEditTaskController.rxDate.value)),
         taskId: task.taskId,
         userId: uid,
       ));

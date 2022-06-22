@@ -62,7 +62,7 @@ class TaskCard extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          DateFormat("dd/MM/yyyy")
+                          DateFormat("MMM d, yyyy")
                               .format(DateFormat("dd-MM-yyyy")
                                   .parse(task.taskDate.toString()))
                               .toString(),
