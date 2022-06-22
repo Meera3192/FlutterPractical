@@ -29,188 +29,191 @@ class TaskList extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        "assets/bg_nature.jpg",
-                      ),
-                      fit: BoxFit.fitWidth),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                        flex: 3,
-                        child: Container(
-                          child: /* Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [*/
-                              Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 15,
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.arrow_back, color: Colors.white),
-                                onPressed: () {
-                                  Get.back();
-                                },
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 40),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      'Your',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.w300,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Things',
-                                      style: TextStyle(
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.w300,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 60,
-                                    ),
-                                    Text(
-                                      DateFormat("MMM d, yyyy").format(DateTime.now()).toString(),
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w300,
-                                        color: Colors.white60,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        )),
-                    Expanded(
-                        flex: 2,
-                        child: Container(
-                          color: Color(0x44100000),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Column(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 15),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          "assets/bg_nature.jpg",
+                        ),
+                        fit: BoxFit.fitWidth),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          flex: 3,
+                          child: Container(
+                            child: /* Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [*/
+                                Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 100,
+                                  height: 15,
                                 ),
-                                Row(
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          '25',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w300,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Personal',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w300,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          '15',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w300,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Business',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w300,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                IconButton(
+                                  icon: const Icon(Icons.arrow_back, color: Colors.white),
+                                  onPressed: () {
+                                    Get.back();
+                                  },
                                 ),
-                                SizedBox(
-                                  height: 80,
-                                ),
-                                Row(
-                                  children: [
-                                    CircularPercentIndicator(
-                                      radius: 20.0,
-                                      lineWidth: 3.0,
-                                      percent: 65 / 100,
-                                      backgroundColor: Colors.grey,
-                                      //circularStrokeCap: CircularStrokeCap.round,
-                                      progressColor: Colors.blue[200],
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      '65% done',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w300,
-                                        color: Colors.white,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 40),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 20,
                                       ),
-                                    ),
-                                  ],
-                                )
+                                      Text(
+                                        'Your',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontSize: 35,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        'Things',
+                                        style: TextStyle(
+                                          fontSize: 35,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:50,
+                                      ),
+                                      Text(
+                                        DateFormat("MMM d, yyyy").format(DateTime.now()).toString(),
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.white60,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                        )),
-                  ],
+                          )),
+                      Expanded(
+                          flex: 2,
+                          child: Container(
+                            color: Color(0x44100000),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 100,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            '25',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Personal',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            '15',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Business',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 70,
+                                  ),
+                                  Row(
+                                    children: [
+                                      CircularPercentIndicator(
+                                        radius: 20.0,
+                                        lineWidth: 3.0,
+                                        percent: 65 / 100,
+                                        backgroundColor: Colors.grey,
+                                        //circularStrokeCap: CircularStrokeCap.round,
+                                        progressColor: Colors.blue[200],
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '65% done',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          )),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: StreamBuilder<QuerySnapshot>(
-                  stream: repository.getStream(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return LinearProgressIndicator();
+              Expanded(
+                flex: 2,
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: repository.getStream(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) return LinearProgressIndicator();
 
-                    return _buildList(context, snapshot.data?.docs ?? []);
-                  }),
-            ),
-          ],
+                      return _buildList(context, snapshot.data?.docs ?? []);
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );

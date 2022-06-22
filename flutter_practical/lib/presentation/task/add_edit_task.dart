@@ -29,38 +29,6 @@ class AddEditTask extends StatelessWidget {
     addEditTaskController.initController(task, isEdit);
     return Scaffold(
         resizeToAvoidBottomInset: false,
-      /*  appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            actions: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back, color: Colors.white),
-                    onPressed: () {
-                      Get.back();
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.account_circle),
-                    tooltip: 'Show Snackbar',
-                    onPressed: () {
-                      signInWithGoogle().then((result) {
-                        if (result != null) {
-                          Get.to(
-                            UserDetails(),
-                          );
-                        } else {
-                          Get.to(
-                            LoginPage(),
-                          );
-                        }
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ]),*/
         body: Container(
             color: Colors.indigo[400],
             child: Padding(
@@ -76,8 +44,17 @@ class AddEditTask extends StatelessWidget {
                           Get.back();
                         },
                       ),
+                      Text(
+                        "Add New things",
+                        style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
                       IconButton(
-                        icon: const Icon(Icons.account_circle),
+                        icon: const Icon(Icons.account_circle, color: Colors.blue,),
                         tooltip: 'Show Snackbar',
                         onPressed: () {
                           signInWithGoogle().then((result) {
@@ -94,6 +71,19 @@ class AddEditTask extends StatelessWidget {
                         },
                       ),
                     ],
+                  ),
+
+                  SizedBox(
+                    height: 30,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.blur_circular, color: Colors.blue,size: 50,),
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                   TextInput(onChanged: (value){
                     addEditTaskController.rxName=RxString(value);
@@ -119,7 +109,7 @@ class AddEditTask extends StatelessWidget {
                                   text: "Date",
                                   style: GoogleFonts.inter(
                                     textStyle: TextStyle(
-                                        color: Color(0xaa212529),
+                                        color: Colors.white,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -136,11 +126,11 @@ class AddEditTask extends StatelessWidget {
                       children: [
                         Obx(
                           () => Text(addEditTaskController.rxDate.value,
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 18, color: Colors.white,),
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.calendar_today),
+                          icon: const Icon(Icons.calendar_today, color: Colors.white,),
                           tooltip: 'Show Snackbar',
                           onPressed: () {
                             addEditTaskController.chooseDate();
@@ -152,17 +142,6 @@ class AddEditTask extends StatelessWidget {
                   SizedBox(
                     height: 60,
                   ),
-                /*  (addEditTaskController.errorMsg != null &&
-                          addEditTaskController.errorMsg.isNotEmpty)
-                      ? Text(
-                          addEditTaskController.errorMsg,
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: Colors.red,
-                          ),
-                          textAlign: TextAlign.center,
-                        )
-                      : Text(''),*/
                   SizedBox(
                     height: 15,
                   ),
